@@ -43,3 +43,9 @@ float pretMediu(Bicicleta b) {
     return (b.nrViteze > 0) ? suma / b.nrViteze : 0;
 }
 
+// Funcție pentru modificarea brandului bicicletei
+void modificaBrand(Bicicleta* b, const char* nouBrand) {
+    free(b->brand);
+    b->brand = (char*)malloc((strlen(nouBrand) + 1) * sizeof(char));
+    strcpy(b->brand, nouBrand);
+}
