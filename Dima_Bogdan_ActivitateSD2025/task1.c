@@ -60,4 +60,20 @@ void afisareBicicleta(Bicicleta b) {
     }
     printf("\n");
     printf("Pret mediu: %.2f\n", pretMediu(b));
+}// Funcție pentru eliberarea memoriei alocate dinamic
+void elibereazaMemorie(Bicicleta* b) {
+    free(b->brand);
+    free(b->preturi);
+}
+
+int main() {
+    Bicicleta b = citireBicicleta();
+    afisareBicicleta(b);
+
+    printf("\nModificare brand...\n");
+    modificaBrand(&b, "Trek");
+    afisareBicicleta(b);
+
+    elibereazaMemorie(&b);
+    return 0;
 }
