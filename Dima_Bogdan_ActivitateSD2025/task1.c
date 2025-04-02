@@ -49,3 +49,15 @@ void modificaBrand(Bicicleta* b, const char* nouBrand) {
     b->brand = (char*)malloc((strlen(nouBrand) + 1) * sizeof(char));
     strcpy(b->brand, nouBrand);
 }
+// Funcție pentru afișarea informațiilor despre bicicletă
+void afisareBicicleta(Bicicleta b) {
+    printf("Cod: %d\n", b.cod);
+    printf("Brand: %s\n", b.brand);
+    printf("Numar viteze: %d\n", b.nrViteze);
+    printf("Preturi pe model: ");
+    for (int i = 0; i < b.nrViteze; i++) {
+        printf("%.2f ", b.preturi[i]);
+    }
+    printf("\n");
+    printf("Pret mediu: %.2f\n", pretMediu(b));
+}
