@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="listadublaInlantuita.c" />
     <ClCompile Include="listaSimpla.c" />
     <ClCompile Include="Matrice.c" />
     <ClCompile Include="Seminar01.c" />

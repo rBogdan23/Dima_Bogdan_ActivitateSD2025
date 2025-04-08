@@ -33,5 +33,8 @@
     <ClCompile Include="Matrice.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listadublaInlantuita.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
