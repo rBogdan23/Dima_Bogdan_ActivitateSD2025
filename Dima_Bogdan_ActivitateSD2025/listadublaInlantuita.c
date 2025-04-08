@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -26,4 +26,13 @@ void inserareFinal(Nod** cap, int valoare) {
         temp->urmator = nou;
         nou->precedent = temp;
     }
+}
+// Afișare de la cap la coadă
+void afisareDirecta(Nod* cap) {
+    printf("Lista direct: ");
+    while (cap != NULL) {
+        printf("%d ", cap->valoare);
+        cap = cap->urmator;
+    }
+    printf("\n");
 }
