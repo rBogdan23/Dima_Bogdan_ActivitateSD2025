@@ -91,3 +91,26 @@ void elibereazaLista(Nod** cap) {
         free(temp);
     }
 }
+int main() {
+    Nod* lista = NULL;
+
+    inserareFinal(&lista, 10);
+    inserareFinal(&lista, 20);
+    inserareFinal(&lista, 30);
+    inserareFinal(&lista, 40);
+
+    afisareDirecta(lista);
+    afisareInversa(lista);
+
+    Nod* gasit = cauta(lista, 30);
+    if (gasit != NULL)
+        printf("Valoarea %d a fost gasita in lista.\n", gasit->valoare);
+    else
+        printf("Valoarea nu a fost gasita.\n");
+
+    sterge(&lista, 20);
+    afisareDirecta(lista);
+
+    elibereazaLista(&lista);
+    return 0;
+}
