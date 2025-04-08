@@ -36,3 +36,17 @@ void afisareDirecta(Nod* cap) {
     }
     printf("\n");
 }
+// Afișare de la coadă la cap
+void afisareInversa(Nod* cap) {
+    if (cap == NULL) return;
+
+    while (cap->urmator != NULL)
+        cap = cap->urmator;
+
+    printf("Lista invers: ");
+    while (cap != NULL) {
+        printf("%d ", cap->valoare);
+        cap = cap->precedent;
+    }
+    printf("\n");
+}
