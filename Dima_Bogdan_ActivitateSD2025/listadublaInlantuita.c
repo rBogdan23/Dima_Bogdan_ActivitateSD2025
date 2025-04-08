@@ -50,3 +50,12 @@ void afisareInversa(Nod* cap) {
     }
     printf("\n");
 }
+// Căutare a unui element
+Nod* cauta(Nod* cap, int valoare) {
+    while (cap != NULL) {
+        if (cap->valoare == valoare)
+            return cap;
+        cap = cap->urmator;
+    }
+    return NULL;
+}
