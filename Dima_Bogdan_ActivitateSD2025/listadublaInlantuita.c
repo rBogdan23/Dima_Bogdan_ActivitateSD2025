@@ -59,3 +59,35 @@ Nod* cauta(Nod* cap, int valoare) {
     }
     return NULL;
 }
+// Ștergere nod cu valoare dată
+void sterge(Nod** cap, int valoare) {
+    Nod* temp = *cap;
+
+    while (temp != NULL && temp->valoare != valoare)
+        temp = temp->urmator;
+
+    if (temp == NULL) {
+        printf("Valoarea %d nu a fost gasita.\n", valoare);
+        return;
+    }
+
+    if (temp->precedent != NULL)
+        temp->precedent->urmator = temp->urmator;
+    else
+        *cap = temp->urmator;
+
+    if (temp->urmator != NULL)
+        temp->urmator->precedent = temp->precedent;
+
+    free(temp);
+    printf("Nodul cu valoarea %d a fost sters.\n", valoare);
+}
+
+// Eliberare memorie
+void elibereazaLista(Nod** cap) {
+    while (*cap != NULL) {
+        Nod* temp = *cap;
+        *cap = (*cap)->urmator;
+        free(temp);
+    }
+}
