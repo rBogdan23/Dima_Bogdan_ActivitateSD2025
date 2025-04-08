@@ -27,5 +27,8 @@
     <ClCompile Include="vector1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listaSimpla.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
