@@ -128,7 +128,33 @@ void salveazaVectorInFisier(const char* numeFisier, Bicicleta* vector, int n) {
     }
     fclose(f);
 }
+// Functie care citeste obiecte din fisier si le returneaza ca vector
+Bicicleta* citesteDinFisier(const char* numeFisier, int* n) {
+    FILE* f = fopen(numeFisier, "r");
+    if (!f) {
+        printf("Eroare deschidere fisier pentru citire.\n");
+        *n = 0;
+        return NULL;
+    }
 
+    Bicicleta* vector = (Bicicleta*)malloc(20 * sizeof(Bicicleta)); // presupunem max 20
+    *n = 0;
+    while (!feof(f)) {
+        Bicicleta b;
+        char buffer[100];
+        fscanf(f, "%d %s %d", &b.cod, buffer, &b.nrViteze);
+        b.brand = (char*)malloc(strlen(buffer) + 1);
+        strcpy(b.brand, buffer);
+
+        b.preturi = (float*)malloc(b.nrViteze * sizeof(float));
+        for (int i = 0; i < b.nrViteze; i++) {
+            fscanf(f, "%f", &b.preturi[i]);
+        }
+        vector[(*n)++] = b;
+    }
+    fclose(f);
+    return vector;
+}
 
 int main() {
     int n = 5;
