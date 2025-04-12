@@ -116,6 +116,19 @@ void salveazaObiectInFisier(Bicicleta b, FILE* f) {
     }
     fprintf(f, "\n");
 }
+// Functie care salveaza un vector de obiecte intr-un fisier text
+void salveazaVectorInFisier(const char* numeFisier, Bicicleta* vector, int n) {
+    FILE* f = fopen(numeFisier, "w");
+    if (f == NULL) {
+        printf("Eroare deschidere fisier pentru scriere.\n");
+        return;
+    }
+    for (int i = 0; i < n; i++) {
+        salveazaObiectInFisier(vector[i], f);
+    }
+    fclose(f);
+}
+
 
 int main() {
     int n = 5;
