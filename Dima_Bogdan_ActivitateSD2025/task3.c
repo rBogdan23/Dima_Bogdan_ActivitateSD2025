@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define CRT_SECURE_NO_WARNINGS
 
 // Definirea structurii Bicicleta
 typedef struct {
@@ -194,6 +195,21 @@ int main() {
     free(filtrate);
     free(pretMic);
     free(toate);
+
+    // Salvare in fisier a vectorului original
+    salveazaVectorInFisier("biciclete.txt", biciclete, n);
+
+    // Citire din fisier
+    int nFisier;
+    Bicicleta* citite = citesteDinFisier("biciclete.txt", &nFisier);
+    printf("\nBiciclete citite din fisier:\n");
+    afisareVector(citite, nFisier);
+
+    // Eliberare memorie citite
+    for (int i = 0; i < nFisier; i++) {
+        elibereazaMemorie(&citite[i]);
+    }
+    free(citite);
 
     return 0;
 }
