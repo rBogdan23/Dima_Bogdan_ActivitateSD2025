@@ -200,6 +200,23 @@ MatriceBiciclete copieInMatricePeGrup(Bicicleta* vector, int n) {
     return mat;
 }
 
+void sorteazaLiniiDupaDimensiune(MatriceBiciclete* mat) {
+    for (int i = 0; i < mat->nrLinii - 1; i++) {
+        for (int j = i + 1; j < mat->nrLinii; j++) {
+            if (mat->dimensiuni[i] > mat->dimensiuni[j]) {
+                // swap dimensiuni
+                int temp = mat->dimensiuni[i];
+                mat->dimensiuni[i] = mat->dimensiuni[j];
+                mat->dimensiuni[j] = temp;
+                // swap pointeri linii
+                Bicicleta* tempL = mat->linii[i];
+                mat->linii[i] = mat->linii[j];
+                mat->linii[j] = tempL;
+            }
+        }
+    }
+}
+
 
 int main() {
     int n = 5;
