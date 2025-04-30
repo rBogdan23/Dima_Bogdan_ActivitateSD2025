@@ -42,5 +42,8 @@
     <ClCompile Include="task3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="task4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
