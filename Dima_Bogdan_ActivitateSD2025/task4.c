@@ -226,6 +226,17 @@ void afisareMatrice(MatriceBiciclete mat) {
     }
 }
 
+void elibereazaMatrice(MatriceBiciclete* mat) {
+    for (int i = 0; i < mat->nrLinii; i++) {
+        for (int j = 0; j < mat->dimensiuni[i]; j++) {
+            elibereazaMemorie(&mat->linii[i][j]);
+        }
+        free(mat->linii[i]);
+    }
+    free(mat->linii);
+    free(mat->dimensiuni);
+}
+
 
 int main() {
     int n = 5;
