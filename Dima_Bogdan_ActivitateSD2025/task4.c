@@ -217,6 +217,15 @@ void sorteazaLiniiDupaDimensiune(MatriceBiciclete* mat) {
     }
 }
 
+void afisareMatrice(MatriceBiciclete mat) {
+    for (int i = 0; i < mat.nrLinii; i++) {
+        printf("\nLinia %d (biciclete: %d):\n", i, mat.dimensiuni[i]);
+        for (int j = 0; j < mat.dimensiuni[i]; j++) {
+            afisareBicicleta(mat.linii[i][j]);
+        }
+    }
+}
+
 
 int main() {
     int n = 5;
