@@ -162,6 +162,45 @@ Bicicleta* citesteDinFisier(const char* numeFisier, int* n) {
     return vector;
 }
 
+MatriceBiciclete copieInMatricePeGrup(Bicicleta* vector, int n) {
+    int nrLinii = 3;  // grupare dupa (nrViteze % 3)
+    MatriceBiciclete mat;
+    mat.linii = (Bicicleta**)malloc(nrLinii * sizeof(Bicicleta*));
+    mat.dimensiuni = (int*)calloc(nrLinii, sizeof(int));
+    mat.nrLinii = nrLinii;
+
+    // contor temporar
+    int* contor = (int*)calloc(nrLinii, sizeof(int));
+    for (int i = 0; i < n; i++) {
+        int grup = vector[i].nrViteze % nrLinii;
+        mat.dimensiuni[grup]++;
+    }
+
+    for (int i = 0; i < nrLinii; i++) {
+        mat.linii[i] = (Bicicleta*)malloc(mat.dimensiuni[i] * sizeof(Bicicleta));
+        contor[i] = 0;
+    }
+
+    for (int i = 0; i < n; i++) {
+        int grup = vector[i].nrViteze % nrLinii;
+        // deep copy
+        Bicicleta b = vector[i];
+        Bicicleta copie;
+        copie.cod = b.cod;
+        copie.brand = strdup(b.brand);
+        copie.nrViteze = b.nrViteze;
+        copie.preturi = (float*)malloc(b.nrViteze * sizeof(float));
+        for (int j = 0; j < b.nrViteze; j++) {
+            copie.preturi[j] = b.preturi[j];
+        }
+        mat.linii[grup][contor[grup]++] = copie;
+    }
+
+    free(contor);
+    return mat;
+}
+
+
 int main() {
     int n = 5;
     Bicicleta* biciclete = (Bicicleta*)malloc(n * sizeof(Bicicleta));
